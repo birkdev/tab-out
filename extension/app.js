@@ -1268,4 +1268,36 @@ function applyTheme(theme) {
   });
 })();
 
-renderDashboard();
+
+// ─── Live tab listeners — auto-refresh when tabs change ────────────────────
+
+let _tabRefreshTimer = null;
+let _initialRenderDone = false;
+
+function scheduleRefresh() {
+  clearTimeout(_tabRefreshTimer);
+  _tabRefreshTimer = setTimeout(() => {
+    // Suppress entrance animations on re-renders so cards don't flicker.
+    if (_initialRenderDone) document.body.classList.add('no-entrance-anim');
+    renderDashboard();
+  }, 300);
+}
+
+if (typeof chrome !== 'undefined' && chrome.tabs) {
+  chrome.tabs.onCreated.addListener(scheduleRefresh);
+  chrome.tabs.onRemoved.addListener(scheduleRefresh);
+  chrome.tabs.onUpdated.addListener((_id, changeInfo) => {
+    // Ignore noisy intermediate events (favicon fetch, loading states).
+    if (changeInfo.status === 'complete' || changeInfo.url) scheduleRefresh();
+  });
+  // Only refresh when switching BACK to the Tab Out tab, not on every tab switch.
+  const extensionOrigin = chrome.runtime.getURL('');
+  chrome.tabs.onActivated.addListener(async ({ tabId }) => {
+    try {
+      const tab = await chrome.tabs.get(tabId);
+      if (tab.url && tab.url.startsWith(extensionOrigin)) scheduleRefresh();
+    } catch {}
+  });
+}
+
+renderDashboard().then(() => { _initialRenderDone = true; });

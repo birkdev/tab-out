@@ -710,6 +710,19 @@ footer { animation: fadeUp 0.5s ease 0.65s both; }
 .deferred-list .deferred-item:nth-child(5) { animation-delay: 0.25s; }
 .deferred-column .section-header { animation: fadeUp 0.5s ease 0.1s both; }
 
+/* Suppress entrance animations on live re-renders so cards don't flicker
+   every time a tab event fires. The JS adds .no-entrance-anim after the
+   first render completes. */
+body.no-entrance-anim header,
+body.no-entrance-anim .tab-cleanup-banner,
+body.no-entrance-anim .active-section .section-header,
+body.no-entrance-anim .deferred-column .section-header,
+body.no-entrance-anim .deferred-list .deferred-item,
+body.no-entrance-anim .missions-empty-state,
+body.no-entrance-anim footer {
+  animation: none !important;
+}
+
 
 /* ================================================================
    STATIC DEFAULT VIEW — new elements added for "AI on demand"
