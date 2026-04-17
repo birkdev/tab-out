@@ -826,10 +826,21 @@ async function renderStaticDashboard() {
   const LANDING_PAGE_PATTERNS = [
     { hostname: 'mail.google.com', test: (p, h) =>
         !h.includes('#inbox/') && !h.includes('#sent/') && !h.includes('#search/') },
-    { hostname: 'x.com',               pathExact: ['/home'] },
-    { hostname: 'www.linkedin.com',    pathExact: ['/'] },
-    { hostname: 'github.com',          pathExact: ['/'] },
-    { hostname: 'www.youtube.com',     pathExact: ['/'] },
+    { hostname: 'x.com',               pathExact: ['/', '/home'] },
+    { hostname: 'twitter.com',         pathExact: ['/', '/home'] },
+    { hostname: 'www.twitter.com',     pathExact: ['/', '/home'] },
+    { hostname: 'www.linkedin.com',    pathExact: ['/', '/feed/'] },
+    { hostname: 'github.com',          pathExact: ['/', '/dashboard'] },
+    { hostname: 'www.github.com',      pathExact: ['/', '/dashboard'] },
+    { hostname: 'www.youtube.com',     pathExact: ['/', '/feed/subscriptions'] },
+    { hostname: 'music.youtube.com',   pathExact: ['/'] },
+    { hostname: 'www.reddit.com',      pathExact: ['/'] },
+    { hostname: 'reddit.com',          pathExact: ['/'] },
+    { hostname: 'old.reddit.com',      pathExact: ['/'] },
+    { hostname: 'www.facebook.com',    pathExact: ['/'] },
+    { hostname: 'www.instagram.com',   pathExact: ['/'] },
+    { hostname: 'bsky.app',            pathExact: ['/'] },
+    { hostname: 'news.ycombinator.com', pathExact: ['/', '/news'] },
     // Merge personal patterns from config.local.js (if it exists)
     ...(typeof LOCAL_LANDING_PAGE_PATTERNS !== 'undefined' ? LOCAL_LANDING_PAGE_PATTERNS : []),
   ];

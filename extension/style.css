@@ -77,6 +77,14 @@ body::before {
   max-width: 960px;
   margin: 0 auto;
   padding: 48px 32px 80px;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Push the footer to the bottom when content is short (e.g., empty state). */
+.container > footer {
+  margin-top: auto;
 }
 
 /* When the saved-for-later sidebar is open, expand the container
@@ -737,7 +745,13 @@ footer { animation: fadeUp 0.5s ease 0.65s both; }
   padding: 56px 24px;
   text-align: center;
 
-  animation: fadeUp 0.5s ease both;
+  /* Custom keyframe preserves the center translate; fadeUp would overwrite it. */
+  animation: emptyStateIn 0.5s ease both;
+}
+
+@keyframes emptyStateIn {
+  from { opacity: 0; transform: translate(-50%, -50%) translateY(12px); }
+  to   { opacity: 1; transform: translate(-50%, -50%); }
 }
 
 /* CSS-drawn checkmark in a glowing circle.
@@ -802,10 +816,32 @@ footer { animation: fadeUp 0.5s ease 0.65s both; }
   align-items: flex-start;
 }
 
-/* Open tabs column keeps the grid layout */
+/* Open tabs column — stretches vertically so the empty state can center. */
+.dashboard-columns {
+  flex: 1;
+}
+
 .dashboard-columns .active-section {
   flex: 1;
   min-width: 0;
+  align-self: stretch;
+  display: flex;
+  flex-direction: column;
+}
+
+/* When the missions area only contains the empty state, let it take the
+   remaining vertical space so the container keeps the footer pinned. */
+.missions:has(.missions-empty-state) {
+  flex: 1;
+}
+
+/* Fixed positioning centers on the viewport; the emptyStateIn keyframe
+   (above) retains the translate(-50%, -50%) in its transform so the
+   centering survives the fade-in animation. */
+.missions-empty-state {
+  position: fixed;
+  top: 50%;
+  left: 50%;
 }
 
 /* Saved for later column — fixed width on the right, scrolls independently */
