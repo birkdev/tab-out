@@ -6,3 +6,4 @@ docs/superpowers/
 extension/config.local.js
 safari/
 .claude/
+dist/

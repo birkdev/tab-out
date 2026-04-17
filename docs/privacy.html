@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Tab Out — Privacy Policy</title>
+<style>
+  :root {
+    color-scheme: light dark;
+    --ink: light-dark(#1a1613, #f2ede5);
+    --paper: light-dark(#f8f5f0, #1a1714);
+    --muted: light-dark(#8a7f75, #9e948a);
+    --accent: light-dark(#c8713a, #d88856);
+  }
+  * { box-sizing: border-box; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    background: var(--paper);
+    color: var(--ink);
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+    line-height: 1.6;
+  }
+  h1 { font-weight: 400; font-size: 32px; letter-spacing: -0.5px; margin-bottom: 8px; }
+  h2 { font-size: 18px; font-weight: 600; margin-top: 40px; margin-bottom: 8px; }
+  p, li { color: var(--ink); }
+  .updated { color: var(--muted); font-size: 13px; margin-bottom: 32px; font-style: italic; }
+  code { background: color-mix(in oklch, var(--ink) 8%, transparent); padding: 2px 6px; border-radius: 3px; font-size: 13px; }
+  a { color: var(--accent); text-decoration: underline; text-underline-offset: 2px; }
+  ul { padding-left: 22px; }
+  li { margin-bottom: 6px; }
+</style>
+</head>
+<body>
+
+<h1>Tab Out — Privacy Policy</h1>
+<p class="updated">Last updated: April 17, 2026</p>
+
+<p>Tab Out is a browser extension that displays your open tabs in a dashboard. This page describes what data it handles and why.</p>
+
+<h2>Summary</h2>
+<p>Tab Out does <strong>not</strong> collect, transmit, sell, or share any personal information. Everything runs on your device.</p>
+
+<h2>What data the extension accesses</h2>
+<p>The extension reads the following browser data <strong>only on your device</strong>, to render the dashboard:</p>
+<ul>
+  <li><strong>Open tab metadata</strong>: URL, title, and favicon URL of each currently-open tab. Used to group tabs by domain and display them on the dashboard.</li>
+  <li><strong>Your "Saved for Later" list</strong>: when you save a tab, its URL, title, favicon URL, and timestamp are stored in <code>chrome.storage.local</code>. This never leaves your device.</li>
+  <li><strong>Your theme preference</strong> (light/dark/auto): stored in your browser's local storage for the extension.</li>
+</ul>
+
+<h2>External network requests</h2>
+<p>The extension makes one type of external request:</p>
+<ul>
+  <li><strong>Favicon lookups</strong>: when a site's favicon isn't cached by the browser, the extension fetches it from <code>icons.duckduckgo.com</code> (DuckDuckGo's public favicon service). DuckDuckGo states this service does not log individual requests. Only the hostname of the site whose icon is being requested is sent — no user identifier.</li>
+</ul>
+<p>No other network requests are made. No analytics, no telemetry, no crash reporting, no account system, no cloud sync.</p>
+
+<h2>What Tab Out does NOT do</h2>
+<ul>
+  <li>Does not track your browsing history</li>
+  <li>Does not read the content of any web page</li>
+  <li>Does not transmit tab URLs or titles to any server</li>
+  <li>Does not use cookies</li>
+  <li>Does not sell or share data with third parties (because there is no data to share)</li>
+  <li>Does not contain any third-party analytics or tracking code</li>
+</ul>
+
+<h2>Permissions</h2>
+<p>Tab Out requests these browser permissions:</p>
+<ul>
+  <li><code>tabs</code> — read the list of open tabs, titles, and URLs for dashboard display</li>
+  <li><code>activeTab</code> — switch focus to a tab you click in the dashboard</li>
+  <li><code>storage</code> — save your "Saved for Later" list locally</li>
+</ul>
+
+<h2>Your data, your control</h2>
+<p>All data Tab Out handles is either transient (current open-tab list, regenerated each time the dashboard renders) or stored locally on your device (Saved for Later list, theme preference). You can delete either at any time:</p>
+<ul>
+  <li>Remove individual saved tabs via the dismiss (×) button</li>
+  <li>Use "Clear all" to empty the Saved for Later or Archive list</li>
+  <li>Uninstall the extension to remove all local storage immediately</li>
+</ul>
+
+<h2>Contact</h2>
+<p>Source code and issues: <a href="https://github.com/birkdev/tab-out">github.com/birkdev/tab-out</a></p>
+<p>Questions about this policy: open an issue on the repository.</p>
+
+</body>
+</html>
