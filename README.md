@@ -2,6 +2,12 @@
 
 **Keep tabs on your tabs.**
 
+<p align="center">
+  <a href="https://chromewebstore.google.com/detail/tab-out/imocfgofpgjhgklobbbpobhkbkjllegj">
+    <img src="https://img.shields.io/chrome-web-store/v/imocfgofpgjhgklobbbpobhkbkjllegj?label=Install%20on%20Chrome%20Web%20Store&logo=googlechrome&logoColor=white&color=4285F4&style=for-the-badge" alt="Install on Chrome Web Store">
+  </a>
+</p>
+
 Tab Out is a browser extension dashboard for your open tabs — grouped by domain, with homepages (Gmail, X, LinkedIn, etc.) pulled into their own card. Close tabs with a satisfying swoosh + confetti.
 
 No server. No account. No third-party tracking. Just an extension.
@@ -50,6 +56,10 @@ Then in Xcode: pick a signing team, **⌘R**, close the container app, enable th
 Bonus: since Safari doesn't let extensions override the new tab page, you can set your Safari homepage to the extension URL for a per-new-tab Tab Out experience. See SAFARI.md for details.
 
 ### Chrome
+
+[**Install from the Chrome Web Store**](https://chromewebstore.google.com/detail/tab-out/imocfgofpgjhgklobbbpobhkbkjllegj) — one click, auto-updates.
+
+Or load from source:
 
 1. Clone the repo
 2. Go to `chrome://extensions`
